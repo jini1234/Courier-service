@@ -11,7 +11,7 @@ public class Package {
     private String id;
     private int weightKgs, distanceKms;
     @Setter
-    private double cost, discount;
+    private double cost, discount, deliveryTimeHrs;
     private Offer offer;
 
     public Package(String id, int weightKgs, int distanceKms, Offer offer) {

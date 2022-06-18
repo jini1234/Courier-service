@@ -11,11 +11,13 @@ public class Delivery {
     private final int baseDeliveryCost;
     private final int noOfPackages;
     private final List<Package> packageList;
+    private final List<Vehicle> vehicleList;
 
     public Delivery(int baseDeliveryCost, int noOfPackages) {
         this.baseDeliveryCost = baseDeliveryCost;
         this.noOfPackages = noOfPackages;
         this.packageList = new ArrayList<>();
+        this.vehicleList = new ArrayList<>();
     }
 
     public void addPackages(String id, int weight, int distance, String offerId) throws IllegalArgumentException {
