@@ -1,4 +1,5 @@
-import com.everest.delivery.Package;
+package com.everest.delivery;
+
 import com.everest.delivery.offer.Offer001;
 import com.everest.delivery.offer.Offer002;
 import com.everest.delivery.offer.Offer003;
