@@ -8,7 +8,7 @@ public class Offer001 implements Offer{
 
     @Override
     public boolean isApplicable(int distance, int weight) {
-        return distance<200 && (weight>=70 && weight <=200);
+        return distance <= 200 && (weight >= 70 && weight <= 200);
     }
 
     @Override
