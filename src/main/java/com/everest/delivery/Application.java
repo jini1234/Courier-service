@@ -5,21 +5,36 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 public class Application {
+
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-        String[] firstLine = bufferedReader.readLine().split(" ");
-        Delivery delivery = new Delivery(Integer.parseInt(firstLine[0]), Integer.parseInt(firstLine[1]));
-        String line;
+        String[] inputData = bufferedReader.readLine().split(" ");
+        int baseDeliveryCost = Integer.parseInt(inputData[0]);
+        int noOfPackages = Integer.parseInt(inputData[1]);
+        Delivery delivery = new Delivery(baseDeliveryCost, noOfPackages);
+        String packageData;
         // Take all Packages input
         for (int i = 0; i < delivery.getNoOfPackages(); i++) {
-            line = bufferedReader.readLine();
-            String[] packageArgs = line.split(" ");
-            delivery.addPackages(packageArgs[0], Integer.parseInt(packageArgs[1]), Integer.parseInt(packageArgs[2]), packageArgs[3]);
+            packageData = bufferedReader.readLine();
+            String[] packageArgs = packageData.split(" ");
+            String offerId = packageArgs[3];
+            int distance = Integer.parseInt(packageArgs[2]);
+            int weight = Integer.parseInt(packageArgs[1]);
+            String id = packageArgs[0];
+            delivery.addPackages(id, weight, distance, offerId);
+        }
+        String vehicleData = bufferedReader.readLine();
+        String[] vehicleInfo = vehicleData.split(" ");
+        int noOfVehicles = Integer.parseInt(vehicleInfo[0]);
+        for (int i = 0; i < noOfVehicles; i++) {
+            int maxSpeed = Integer.parseInt(vehicleInfo[1]);
+            int maxWeight = Integer.parseInt(vehicleInfo[2]);
+            delivery.getVehicleList().add(new Vehicle(i + 1, maxSpeed, maxWeight));
         }
         // Process Deliveries
         delivery.processDeliveries();
         // Print Output
-        delivery.getPackageList().forEach(pack -> System.out.println(pack.getId() + " " + pack.getDiscount() + " " + pack.getCost()));
+        delivery.getDeliveredPackagesList().forEach(pack -> System.out.println(pack.getId() + " " + pack.getDiscount() + " " + pack.getCost() + " " + pack.getDeliveryTimeHrs()));
 
         bufferedReader.close();
     }
