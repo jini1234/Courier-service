@@ -1,11 +1,17 @@
 package com.everest.delivery;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
-@AllArgsConstructor
 public class Vehicle {
     private final int id, maxSpeed, maxWeight;
-    private final double returningTime;
+    @Setter
+    private double returningTime;
+
+    public Vehicle(int id, int maxSpeed, int maxWeight) {
+        this.id = id;
+        this.maxSpeed = maxSpeed;
+        this.maxWeight = maxWeight;
+    }
 }

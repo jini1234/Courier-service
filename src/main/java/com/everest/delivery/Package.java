@@ -1,22 +1,20 @@
 package com.everest.delivery;
 
 import com.everest.delivery.offer.Offer;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Optional;
 
 @Getter
-@AllArgsConstructor
 public class Package {
     public static final int PER_KG_COST = 10;
     public static final int PER_KM_COST = 5;
-    private String id;
-    private int weightKgs, distanceKms;
+    private final String id;
+    private final int weightKgs, distanceKms;
     @Setter
     private double cost, discount, deliveryTimeHrs;
-    private Offer offer;
+    private final Offer offer;
 
     public Package(String id, int weightKgs, int distanceKms, Optional<Offer> offer) {
         this.id = id;
@@ -28,7 +26,7 @@ public class Package {
     public void calculateCost(int baseDeliveryCost) {
         double cost = baseDeliveryCost + (this.weightKgs * PER_KG_COST) + (this.distanceKms * PER_KM_COST);
         if (isOfferApplicableForPackage()) {
-            double discount = cost * (offer.getDiscountPercent() / 100);
+            double discount = cost * (this.getOffer().getDiscountPercent() / 100);
             cost -= discount;
             this.setDiscount(discount);
         }
