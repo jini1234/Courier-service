@@ -1,25 +1,24 @@
 package com.everest.delivery.offer;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
+import java.util.HashMap;
+import java.util.Optional;
 
 public class OfferMappings {
-    static List<Offer> allOffers;
+    static HashMap<String, Offer> allOffers;
 
     static {
-        allOffers = new ArrayList<>();
-        allOffers.add(new Offer001());
-        allOffers.add(new Offer002());
-        allOffers.add(new Offer003());
+        allOffers = new HashMap<>();
+        Offer offer = new Offer001();
+        allOffers.put(offer.getId(), offer);
+        offer = new Offer002();
+        allOffers.put(offer.getId(), offer);
+        offer = new Offer003();
+        allOffers.put(offer.getId(), offer);
+        offer = new Offer008();
+        allOffers.put(offer.getId(), offer);
     }
 
-    public static Offer findOfferById(String offerId) {
-        List<Offer> filteredOffer = allOffers.stream().filter(offer -> offer.getId().equals(offerId)).collect(Collectors.toList());
-        if (filteredOffer.size() > 0) {
-            return filteredOffer.get(0);
-        } else {
-            throw new IllegalArgumentException("Invalid Offer Code: " + offerId);
-        }
+    public static Optional<Offer> findOfferById(String offerId) {
+        return Optional.of(allOffers.getOrDefault(offerId, null));
     }
 }
