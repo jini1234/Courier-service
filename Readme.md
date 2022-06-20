@@ -1,0 +1,20 @@
+# Courier-Service
+
+### Example I/O
+
+```
+100 5
+PKG1 50 30 OFR001
+PKG2 75 125 OFR008
+PKG3 175 100 OFR003
+PKG4 110 60 OFR002
+PKG5 155 95 NA
+2 70 200
+PKG2 0.0000 1475.0000 1.7857
+PKG4 105.0000 1395.0000 0.8571
+PKG3 0.0000 2350.0000 1.4286
+PKG5 0.0000 2125.0000 4.2143
+PKG1 0.0000 750.0000 4.0000
+```
+
+Note: Due to decimal precision, output may not match as specified in the question.

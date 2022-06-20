@@ -19,6 +19,6 @@ public class OfferMappings {
     }
 
     public static Optional<Offer> findOfferById(String offerId) {
-        return Optional.of(allOffers.getOrDefault(offerId, null));
+        return Optional.ofNullable(allOffers.getOrDefault(offerId, null));
     }
 }

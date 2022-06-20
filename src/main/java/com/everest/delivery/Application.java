@@ -3,9 +3,10 @@ package com.everest.delivery;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.text.DecimalFormat;
 
 public class Application {
-
+    final static DecimalFormat df = new DecimalFormat("#0.0000");
     public static void main(String[] args) throws IOException {
         BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
         String[] inputData = bufferedReader.readLine().split(" ");
@@ -34,8 +35,9 @@ public class Application {
         // Process Deliveries
         delivery.processDeliveries();
         // Print Output
-        delivery.getDeliveredPackagesList().forEach(pack -> System.out.println(pack.getId() + " " + pack.getDiscount() + " " + pack.getCost() + " " + pack.getDeliveryTimeHrs()));
+        delivery.getDeliveredPackagesList().forEach(pack -> System.out.println(pack.getId() + " " + df.format(pack.getDiscount()) + " " + df.format(pack.getCost()) + " " + df.format(pack.getDeliveryTimeHrs())));
 
         bufferedReader.close();
     }
 }
+
