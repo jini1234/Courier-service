@@ -24,10 +24,10 @@ public class OfferFactory {
         return offerCache.get(offerId);
     }
 
+    // To add new offer type, add in this method to read corresponding config file.
     private static void populateOfferCache() {
         parseOffersConfigList(getOffers("OffersByWeightAndDistanceConfig.yaml", OfferByWeightAndDistance.class));
         parseOffersConfigList(getOffers("OffersByWeightConfig.yaml", OfferByWeight.class));
-
     }
 
     private static List<Offer> getOffers(String configFileName, Class<? extends Offer> offerClass) {
