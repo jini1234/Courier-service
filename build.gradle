@@ -1,5 +1,6 @@
 plugins {
     id 'java'
+    id "application"
 }
 
 group 'org.example'
@@ -10,6 +11,7 @@ repositories {
 }
 
 dependencies {
+    implementation 'org.yaml:snakeyaml:1.30'
     implementation("com.google.guava:guava:31.1-jre")
     implementation 'org.projectlombok:lombok:1.18.24'
     annotationProcessor 'org.projectlombok:lombok:1.18.24'
@@ -21,4 +23,12 @@ dependencies {
 
 test {
     useJUnitPlatform()
+}
+
+ext {
+    javaMainClass = "com.everest.delivery.app.Application"
+}
+
+application {
+    mainClassName = javaMainClass
 }
