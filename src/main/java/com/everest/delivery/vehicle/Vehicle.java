@@ -1,4 +1,4 @@
-package com.everest.delivery;
+package com.everest.delivery.vehicle;
 
 import lombok.Getter;
 import lombok.Setter;

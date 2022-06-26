@@ -1,0 +1,16 @@
+---
+id: OFR001
+discount: 10.0
+distanceRange: 0-200
+weightRange: 70-200
+---
+id: OFR002
+discount: 7.0
+distanceRange: 50-150
+weightRange: 100-250
+---
+id: OFR003
+discount: 5.0
+distanceRange: 50-250
+weightRange: 10-150
+
