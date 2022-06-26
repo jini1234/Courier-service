@@ -1,7 +1,14 @@
 package com.everest.delivery.offer;
 
-public interface Offer {
-    String getId();
-    boolean isApplicable(int distance, int weight);
-    double getDiscountPercent();
+import com.everest.delivery.packs.Pack;
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
+public abstract class Offer {
+    private String id;
+    private double discount;
+
+    public abstract boolean isApplicable(Pack pack);
 }
