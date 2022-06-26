@@ -1,16 +1,13 @@
 package com.everest.delivery;
 
-import com.everest.delivery.offer.Offer001;
-import com.everest.delivery.offer.Offer002;
-import com.everest.delivery.offer.Offer003;
+import com.everest.delivery.packs.NormalPack;
+import com.everest.delivery.packs.Pack;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-import java.util.Optional;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class PackageTest {
+public class PackTest {
 
     @ParameterizedTest
     @CsvSource({
@@ -19,7 +16,7 @@ public class PackageTest {
             "PKG3, 250, 100, 50, 3050.0, 0.0",
     })
     public void should_verify_package_cost_with_Offer001(String id, int weight, int distance, int baseDeliveryCost, double packageCost, double discount) {
-        Package pack = new Package(id, weight, distance, Optional.of(new Offer001()));
+        Pack pack = new NormalPack(id, weight, distance, "OFR001");
         pack.calculateCost(baseDeliveryCost);
         assertEquals(packageCost, pack.getCost(), 0.000001);
         assertEquals(discount, pack.getDiscount(), 0.000001);
@@ -32,7 +29,7 @@ public class PackageTest {
             "PKG3, 120, 100, 50, 1627.5, 122.5",
     })
     public void should_verify_package_cost_with_Offer002(String id, int weight, int distance, int baseDeliveryCost, double packageCost, double discount) {
-        Package pack = new Package(id, weight, distance, Optional.of(new Offer002()));
+        Pack pack = new NormalPack(id, weight, distance, "OFR002");
         pack.calculateCost(baseDeliveryCost);
         assertEquals(packageCost, pack.getCost(), 0.000001);
         assertEquals(discount, pack.getDiscount(), 0.000001);
@@ -45,7 +42,7 @@ public class PackageTest {
             "PKG3, 15, 50, 50, 427.5, 22.5",
     })
     public void should_verify_package_cost_with_Offer003(String id, int weight, int distance, int baseDeliveryCost, double packageCost, double discount) {
-        Package pack = new Package(id, weight, distance, Optional.of(new Offer003()));
+        Pack pack = new NormalPack(id, weight, distance, "OFR003");
         pack.calculateCost(baseDeliveryCost);
         assertEquals(packageCost, pack.getCost(), 0.000001);
         assertEquals(discount, pack.getDiscount(), 0.000001);
@@ -58,7 +55,7 @@ public class PackageTest {
             "PKG3, 15, 50, 50, 450.0, 0.0",
     })
     public void should_verify_package_cost_with_No_Offer(String id, int weight, int distance, int baseDeliveryCost, double packageCost, double discount) {
-        Package pack = new Package(id, weight, distance, Optional.empty());
+        Pack pack = new NormalPack(id, weight, distance, "");
         pack.calculateCost(baseDeliveryCost);
         assertEquals(packageCost, pack.getCost(), 0.000001);
         assertEquals(discount, pack.getDiscount(), 0.000001);
